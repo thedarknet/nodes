@@ -28,7 +28,7 @@ def startNode():
             },
             "This rat looks like a questionable character."
             )
-    DarkRat.addAction("lift","Picking up this rat will guarantee the need for bandaids. You leave it alone.",None)
+    DarkRat.addAction("lift","Picking up this rat will guarantee the need for bandaids. You better leave it alone.",None)
     DarkRat.addAction("diagnose","You daintily poke the rat with a stick, ignoring the chittering complaints.",myRatFunc)
     DarkRat.give({'name':'bauble','desc':'A shiny bauble of unknown origin.','qty':1})
     
@@ -44,9 +44,9 @@ def startNode():
             },
             "The chicken has a dark aura of avian malice."
             )
-    DarkChicken.addAction("chase","why would you chase a dark chicken?", None);
-    DarkChicken.addAction("pluckit","You have to catch it first!", None);
-    DarkChicken.addAction("eatit","Do you _really_ want to put that in your mouth?", None);
+    DarkChicken.addAction("chase","Why would you chase a dark chicken?", None)
+    DarkChicken.addAction("pluckit","You have to catch it first!", None)
+    DarkChicken.addAction("eatit","Do you _really_ want to put that in your mouth?", None)
     
     DarkCat = NPC(
             '1533453702_3.0_1.0-001',
@@ -58,10 +58,10 @@ def startNode():
                 'illcode':[0x40, 0x20], #Toxoplasmosis and Plague
                 'mood':''
             },
-            "The cat has a dark aura of avian malice."
+            "The cat looks evil and fluffy."
             )
-    DarkCat.addAction("kickit","You miss and fall on your ass",None);
-    DarkCat.addAction("pet","Your hand comes back bloody!", None);
+    DarkCat.addAction("kickit","You miss and fall on your ass.",None)
+    DarkCat.addAction("pet","Your hand comes back bloody!", None)
     
     DarkHorse = NPC(
             '1533454339_3.0_1.0-001',
@@ -73,10 +73,10 @@ def startNode():
                 'illcode':[0x8, 0x20], #Tetanus & Plague
                 'mood':''
             },
-            "The horse has a dark aura of avian malice."
+            "The horse has something on it that makes it look dark and shiny."
             )
-    DarkHorse.addAction("kickit","You miss and fall on your ass",None);
-    DarkHorse.addAction("pet","Your hand comes back bloody!", None);
+    DarkHorse.addAction("approach","It spontaneously craps on your shoe.",None)
+    DarkHorse.addAction("pet","Your hand comes back with a smelly black goo!", None)
     
     DarkFlea = NPC(
             '1533454340_3.0_1.0-001',
@@ -88,10 +88,10 @@ def startNode():
                 'illcode':[0x10], #Polio
                 'mood':''
             },
-            "The Flea  has a dark aura of avian malice."
+            "Seriously, you can see a flee that is menacing, really?"
             )
-    DarkFlea.addAction("kickit","You miss and fall on your ass",None);
-    DarkFlea.addAction("pet","Your hand comes back bloody!", None);
+    DarkFlea.addAction("kickit","It jumps on your leg and bites you as you miss and fall on your ass",None)
+    DarkFlea.addAction("pet","It jumps on your hand and bites you again, it's a flea what do you expect?", None)
 
     return [DarkRat, DarkChicken, DarkCat, DarkHorse, DarkFlea]
 
