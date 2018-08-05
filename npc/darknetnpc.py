@@ -1,11 +1,13 @@
 #!/usr/bin/python
 
-# This is beta, pending playtests / load function not yet added
-
 import sys
 from npc import NPC
+from flask import Flask, url_for, jsonify
 
-# These are sample instances of NPCs on the node
+
+app = Flask(__name__)
+controls = ['reset', 'save']
+NPCS = []
 
 def myRatFunc(rat):
     rat.infect(0x03)
@@ -43,20 +45,13 @@ def startNode():
     DarkRat.addAction("diagnose","You daintily poke the rat with a stick, ignoring the chittering complaints.",myRatFunc)
     DarkRat.infect(0x0A)
     DarkRat.give({'name':'bauble','desc':'A shiny bauble of unknown origin.','qty':1})
+    return [DarkRat, DarkChicken]
 
-
-# ---------NPC API code starts here---------
-#
-# REST API
-from flask import Flask, url_for, jsonify
-app = Flask(__name__)
-
+    
 @app.route('/')
 def api_root():
     return "Darknet NPC Node"
 
-controls = ['reset', 'save']
-startNode()
 
 # Get list of NPCs served by this Node by SN & Name, as well as Node controls
 @app.route('/helo')
@@ -66,6 +61,7 @@ def api_helo():
         allnpcs.append([mynpc.sn,mynpc.name])
     return jsonify([allnpcs, controls])
 
+
 # List all NPCs
 @app.route('/npc')
 def api_npc():
@@ -73,6 +69,7 @@ def api_npc():
     for mynpc in NPC:
         mynpcs.append(mynpc.name)
     return jsonify([mynpcs])
+
 
 # List all NPC verbs and responses 
 @app.route('/npc/<npc>/actions')
@@ -85,6 +82,7 @@ def api_npc_npc_actions(npc):
             return jsonify([myverbs])
     return "I don't know that NPC."
 
+
 # List NPC overall health 
 @app.route('/npc/<npc>/health')
 def api_npc_health(npc):
@@ -93,6 +91,7 @@ def api_npc_health(npc):
             return jsonify([mynpc.health])
     return "I don't know that NPC's health."
 
+
 # List specific NPC healthcode value
 @app.route('/npc/<npc>/health/<key>')
 def api_npc_health_key(npc,key):
@@ -100,6 +99,7 @@ def api_npc_health_key(npc,key):
         if mynpc.name == npc:
             return jsonify([mynpc.health[key]])
     return "I don't know that NPC's health key."
+
 
 # Do NPC action
 @app.route('/npc/<npc>/<action>')
@@ -113,12 +113,18 @@ def api_npc_action(npc,action):
                     return jsonify([thisaction['resp']])
     return "I don't know that NPC."
 
+
 # Node controls - these should not be part of gamification
 # Reset *all* Node NPCs to original state
 @app.route('/ctrl/reset')
 def api_ctrl_reset():
-    startNode()
+    global NPCS
+    NPCS = []
+    npcs = startNode()
+    for npc in npcs:
+        NPCS.append(npc)
     return "Node reinitialized."
+
 
 @app.route('/ctrl/save')
 def api_ctrl_save():
@@ -150,4 +156,7 @@ def api_ctrl_save():
 
 
 if __name__ == '__main__':
+    npcs = startNode()
+    for npc in npcs:
+        NPCS.append(npc)
     app.run()
