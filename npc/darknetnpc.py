@@ -9,6 +9,7 @@ app = Flask(__name__)
 controls = ['reset', 'save']
 NPCS = []
 
+
 def myRatFunc(rat):
     rat.infect(0x03)
     rat.health['mood'] = "annoyed"
