@@ -11,3 +11,12 @@ An Agent Badge is an official Darknet Node and electronic PCB "badge" generally 
 NPC Endpoints are Nodes that communicate with a basic interface to other Darknet Badges and Participating Devices. An NPC Endpoint style Node is equipped with an API for communication and interactions. NPCs all have a name, characteristics, inventory, allowed actions, and responses. 
 
 “Participating Devices” are other electronic devices that participate with the Darknet and/or interact with the Daemon via Darknet protocols and APIs. 
+
+virtualenv ~/nodes-venv
+
+source ~/nodes-venv/bin/activate
+
+cd npc
+pip install -r requirements.txt
+python darknetnpc.py
+

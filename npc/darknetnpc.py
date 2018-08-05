@@ -11,7 +11,6 @@ NPCS = []
 
 
 def myRatFunc(rat):
-    rat.infect(0x03)
     rat.health['mood'] = "annoyed"
 
     
@@ -24,11 +23,15 @@ def startNode():
                 'hp':100,
                 'hungry':False,
                 'thirsty':False, 
-                'illcode':[0x01],
+                'illcode':[0x20], #Plague
                 'mood':'bored'
             },
             "This rat looks like a questionable character."
             )
+    DarkRat.addAction("lift","Picking up this rat will guarantee the need for bandaids. You leave it alone.",None)
+    DarkRat.addAction("diagnose","You daintily poke the rat with a stick, ignoring the chittering complaints.",myRatFunc)
+    DarkRat.give({'name':'bauble','desc':'A shiny bauble of unknown origin.','qty':1})
+    
     DarkChicken = NPC(
             '1531682536_3.0_1.0-001',
             'DarkChicken',
@@ -36,16 +39,61 @@ def startNode():
                 'hp':20,
                 'hungry':True,
                 'thirsty':False,
-                'illcode':[0x00],
+                'illcode':[0x02, 0x4], #Avian flu and Measles
                 'mood':''
             },
             "The chicken has a dark aura of avian malice."
             )
-    DarkRat.addAction("lift","Picking up this rat will guarantee the need for bandaids. You leave it alone.",None)
-    DarkRat.addAction("diagnose","You daintily poke the rat with a stick, ignoring the chittering complaints.",myRatFunc)
-    DarkRat.infect(0x0A)
-    DarkRat.give({'name':'bauble','desc':'A shiny bauble of unknown origin.','qty':1})
-    return [DarkRat, DarkChicken]
+    DarkChicken.addAction("chase","why would you chase a dark chicken?", None);
+    DarkChicken.addAction("pluckit","You have to catch it first!", None);
+    DarkChicken.addAction("eatit","Do you _really_ want to put that in your mouth?", None);
+    
+    DarkCat = NPC(
+            '1533453702_3.0_1.0-001',
+            'DarkCat',
+            {
+                'hp':40,
+                'hungry':False,
+                'thirsty':False,
+                'illcode':[0x40, 0x20], #Toxoplasmosis and Plague
+                'mood':''
+            },
+            "The cat has a dark aura of avian malice."
+            )
+    DarkCat.addAction("kickit","You miss and fall on your ass",None);
+    DarkCat.addAction("pet","Your hand comes back bloody!", None);
+    
+    DarkHorse = NPC(
+            '1533454339_3.0_1.0-001',
+            'DarkHorse',
+            {
+                'hp':100,
+                'hungry':False,
+                'thirsty':False,
+                'illcode':[0x8, 0x20], #Tetanus & Plague
+                'mood':''
+            },
+            "The horse has a dark aura of avian malice."
+            )
+    DarkHorse.addAction("kickit","You miss and fall on your ass",None);
+    DarkHorse.addAction("pet","Your hand comes back bloody!", None);
+    
+    DarkFlea = NPC(
+            '1533454340_3.0_1.0-001',
+            'DarkHorse',
+            {
+                'hp':100,
+                'hungry':False,
+                'thirsty':False,
+                'illcode':[0x10], #Polio
+                'mood':''
+            },
+            "The Flea  has a dark aura of avian malice."
+            )
+    DarkFlea.addAction("kickit","You miss and fall on your ass",None);
+    DarkFlea.addAction("pet","Your hand comes back bloody!", None);
+
+    return [DarkRat, DarkChicken, DarkCat, DarkHorse, DarkFlea]
 
 
 @app.route('/')
@@ -59,7 +107,7 @@ def api_helo():
     allnpcs = []
     for mynpc in NPCS:
         allnpcs.append([mynpc.sn,mynpc.name])
-    return jsonify([allnpcs, controls])
+    return jsonify([allnpcs])
 
 
 # List all NPCs
@@ -68,18 +116,31 @@ def api_npc():
     mynpcs = []
     for mynpc in NPCS:
         mynpcs.append(mynpc.name)
-    return jsonify([mynpcs])
+    return jsonify( 
+            {
+                'npcs':[mynpcs]
+            }
+    )
 
 
 # List all NPC verbs and responses 
-@app.route('/npc/<npc>/actions')
+@app.route('/npc/<npc>')
 def api_npc_npc_actions(npc):
     for mynpc in NPCS:
         if mynpc.name == npc:
             myverbs = []
             for action in mynpc.actions:
                 myverbs.append(action['verb'])
-            return jsonify([myverbs])
+            infections = mynpc.infect()
+            print infections
+            return jsonify(
+                    {
+                        'n':mynpc.name, 
+                        'd':mynpc.desc, 
+                        'a':[myverbs], 
+                        'i':infections
+                    }
+            )
     return "I don't know that NPC."
 
 
@@ -110,7 +171,11 @@ def api_npc_action(npc,action):
                 if thisaction['verb'] == action:
                     if thisaction['func']:
                         thisaction['func'](mynpc)
-                    return jsonify([thisaction['resp']])
+                    return jsonify( {
+                        'r':thisaction['resp'],
+                        'i':mynpc.infect()
+                        }
+                    )
     return "I don't know that NPC."
 
 
@@ -159,4 +224,4 @@ if __name__ == '__main__':
     npcs = startNode()
     for npc in npcs:
         NPCS.append(npc)
-    app.run()
+    app.run(host="0.0.0.0", port=int("8080"), debug=True)
