@@ -1,11 +1,9 @@
 class NPC(object):
-
     def __init__(self, sn, name, health, desc):
-        self._NPCs.append(self)
         self.sn = sn # int epoch:float Darknet iteration:float version:int id
-	self.name = name #str
-	self.health = health # dict {hp, hunger, thirst, illcode, mood}
-	self.desc = desc #text string with description for "look" action
+        self.name = name #str
+        self.health = health # dict {hp, hunger, thirst, illcode, mood}
+        self.desc = desc #text string with description for "look" action
         self.actions = [{'verb':'look','resp':desc, 'func':None}] # list of dict {verb, description, function to execute before reply
         self.inventory = [] # list of dict {name, desc, qty}
 
