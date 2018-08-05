@@ -57,7 +57,7 @@ def api_root():
 @app.route('/helo')
 def api_helo():
     allnpcs = []
-    for mynpc in NPC._NPCs:
+    for mynpc in NPCS:
         allnpcs.append([mynpc.sn,mynpc.name])
     return jsonify([allnpcs, controls])
 
@@ -66,7 +66,7 @@ def api_helo():
 @app.route('/npc')
 def api_npc():
     mynpcs = []
-    for mynpc in NPC:
+    for mynpc in NPCS:
         mynpcs.append(mynpc.name)
     return jsonify([mynpcs])
 
@@ -74,7 +74,7 @@ def api_npc():
 # List all NPC verbs and responses 
 @app.route('/npc/<npc>/actions')
 def api_npc_npc_actions(npc):
-    for mynpc in NPC:
+    for mynpc in NPCS:
         if mynpc.name == npc:
             myverbs = []
             for action in mynpc.actions:
@@ -86,7 +86,7 @@ def api_npc_npc_actions(npc):
 # List NPC overall health 
 @app.route('/npc/<npc>/health')
 def api_npc_health(npc):
-    for mynpc in NPC:
+    for mynpc in NPCS:
         if mynpc.name == npc:
             return jsonify([mynpc.health])
     return "I don't know that NPC's health."
@@ -95,7 +95,7 @@ def api_npc_health(npc):
 # List specific NPC healthcode value
 @app.route('/npc/<npc>/health/<key>')
 def api_npc_health_key(npc,key):
-    for mynpc in NPC:
+    for mynpc in NPCS:
         if mynpc.name == npc:
             return jsonify([mynpc.health[key]])
     return "I don't know that NPC's health key."
@@ -104,7 +104,7 @@ def api_npc_health_key(npc,key):
 # Do NPC action
 @app.route('/npc/<npc>/<action>')
 def api_npc_action(npc,action):
-    for mynpc in NPC:
+    for mynpc in NPCS:
         if mynpc.name == npc:
             for thisaction in mynpc.actions:
                 if thisaction['verb'] == action:
@@ -132,7 +132,7 @@ def api_ctrl_save():
     allactions = ""
     allitems = ""
     allnpcs = ""
-    for mynpc in NPC:
+    for mynpc in NPCS:
         #CLEAN THIS UP
         for thisaction in mynpc.actions:
             if str(thisaction['func']) != "None":
