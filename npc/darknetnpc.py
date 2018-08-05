@@ -14,6 +14,7 @@ def myRatFunc(rat):
     rat.infect(0x03)
     rat.health['mood'] = "annoyed"
 
+    
 def startNode():
     # Add NPCs - serialnum, name, healthcode dict, moodcode dict
     DarkRat = NPC(
@@ -40,15 +41,13 @@ def startNode():
             },
             "The chicken has a dark aura of avian malice."
             )
-
-
     DarkRat.addAction("lift","Picking up this rat will guarantee the need for bandaids. You leave it alone.",None)
     DarkRat.addAction("diagnose","You daintily poke the rat with a stick, ignoring the chittering complaints.",myRatFunc)
     DarkRat.infect(0x0A)
     DarkRat.give({'name':'bauble','desc':'A shiny bauble of unknown origin.','qty':1})
     return [DarkRat, DarkChicken]
 
-    
+
 @app.route('/')
 def api_root():
     return "Darknet NPC Node"
