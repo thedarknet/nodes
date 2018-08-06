@@ -28,7 +28,7 @@ def startNode():
             },
             "This rat looks like a questionable character."
             )
-    DarkRat.addAction("lift","Picking up this rat will guarantee the need for bandaids. You better leave it alone.",None)
+    DarkRat.addAction("lift","Picking up this rat will guarantee the need for bandaids. You leave it alone.",None)
     DarkRat.addAction("diagnose","You daintily poke the rat with a stick, ignoring the chittering complaints.",myRatFunc)
     DarkRat.give({'name':'bauble','desc':'A shiny bauble of unknown origin.','qty':1})
     
@@ -44,7 +44,7 @@ def startNode():
             },
             "The chicken has a dark aura of avian malice."
             )
-    DarkChicken.addAction("chase","Why would you chase a dark chicken?", None)
+    DarkChicken.addAction("chase","why would you chase a dark chicken?", None)
     DarkChicken.addAction("pluckit","You have to catch it first!", None)
     DarkChicken.addAction("eatit","Do you _really_ want to put that in your mouth?", None)
     
@@ -60,7 +60,7 @@ def startNode():
             },
             "The cat looks evil and fluffy."
             )
-    DarkCat.addAction("kickit","You miss and fall on your ass.",None)
+    DarkCat.addAction("kickit","You miss and fall on your ass",None)
     DarkCat.addAction("pet","Your hand comes back bloody!", None)
     
     DarkHorse = NPC(
@@ -73,14 +73,14 @@ def startNode():
                 'illcode':[0x8, 0x20], #Tetanus & Plague
                 'mood':''
             },
-            "The horse has something on it that makes it look dark and shiny."
+            "The horse has a dark aura of avian malice."
             )
     DarkHorse.addAction("approach","It spontaneously craps on your shoe.",None)
     DarkHorse.addAction("pet","Your hand comes back with a smelly black goo!", None)
     
     DarkFlea = NPC(
             '1533454340_3.0_1.0-001',
-            'DarkHorse',
+            'DarkFlea',
             {
                 'hp':100,
                 'hungry':False,
@@ -90,7 +90,7 @@ def startNode():
             },
             "Seriously, you can see a flee that is menacing, really?"
             )
-    DarkFlea.addAction("kickit","It jumps on your leg and bites you as you miss and fall on your ass",None)
+    DarkFlea.addAction("kickit","It jumps on your leg and bites you as you miss falling on your ass",None)
     DarkFlea.addAction("pet","It jumps on your hand and bites you again, it's a flea what do you expect?", None)
 
     return [DarkRat, DarkChicken, DarkCat, DarkHorse, DarkFlea]
@@ -118,7 +118,7 @@ def api_npc():
         mynpcs.append(mynpc.name)
     return jsonify( 
             {
-                'npcs':[mynpcs]
+                'npcs':mynpcs
             }
     )
 
@@ -137,7 +137,7 @@ def api_npc_npc_actions(npc):
                     {
                         'n':mynpc.name, 
                         'd':mynpc.desc, 
-                        'a':[myverbs], 
+                        'a':myverbs, 
                         'i':infections
                     }
             )
@@ -167,16 +167,27 @@ def api_npc_health_key(npc,key):
 def api_npc_action(npc,action):
     for mynpc in NPCS:
         if mynpc.name == npc:
-            for thisaction in mynpc.actions:
-                if thisaction['verb'] == action:
-                    if thisaction['func']:
-                        thisaction['func'](mynpc)
-                    return jsonify( {
-                        'r':thisaction['resp'],
-                        'i':mynpc.infect()
-                        }
-                    )
-    return "I don't know that NPC."
+            myverbs = []
+            infections = None
+            response = None
+            for a in mynpc.actions:
+                myverbs.append(a['verb'])
+                if a['verb'] == action:
+                    if a['func'] != None:
+                        a['func'](mynpc)
+                    infections = mynpc.infect()
+                    response = a['resp']
+
+            return jsonify(
+                    {
+                        'n':mynpc.name, 
+                        'd':mynpc.desc, 
+                        'a':myverbs, 
+                        'i':infections,
+                        'r':response
+                    }
+            )
+    return "I don't know that action."
 
 
 # Node controls - these should not be part of gamification
