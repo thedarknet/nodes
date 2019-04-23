@@ -17,10 +17,13 @@ INSTANCE
   Instances of the Daemon may be created to allow offline or single event coordination of Darknet functions. These instances are only run by Darknet operatives.
   
 NODE
+  A device intended to interact with or provide a service to agents, operatives, the Daemon, or other Darknet devices. Participates by following protocols as documented in this repository.
 
 OPERATIVE
+  Any volunteer recognized as an operative and responsible for the creation, design, maintenance, or operation in some form of the Daemon or the Darknet.
 
 PROTOCOL
-
+  ** To be added: list of core protocols **
+  
 SENSOR
-
+  Any participating device that provides data in the form of audio, video, or other sensory input that is stored or transmitted in accordance with Darknet protocols.
