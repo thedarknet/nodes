@@ -10,6 +10,12 @@ Node communication is currently in development. The protocol stack is based on e
 
 ![alt text][pstack1]
 
+### Hardware Communications ###
+For hardware developers and designers wishing to integrate with Darknet badges or nodes, the following standards will be implemented as available and indicated in the associated repository documentation.
+
+**Shitty Add-On & I2C**
+*To be updated*
+
 
 
 
