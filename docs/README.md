@@ -13,4 +13,4 @@ Quick reference in [terms.txt]
 
 
 
-[pstack1]: https://github.com/thedarknet/nodes/docs/images/dstack1.jpg
+[pstack1]: https://github.com/thedarknet/nodes/blob/master/docs/images/dstack.jpg "Darknet Node Stack"
