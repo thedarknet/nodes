@@ -45,6 +45,11 @@ For hardware developers and designers wishing to integrate with Darknet badges o
 **Shitty Add-On & I2C**
 *To be updated*
 
+Node Classification
+------
+
+*To be updated*
+
 
 
 
