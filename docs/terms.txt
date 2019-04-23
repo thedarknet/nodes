@@ -1,12 +1,26 @@
 
 AGENT
+  Any participant in the Darknet, generally registered with the Daemon (actual)
+
 BADGE
+  A device used by agents in communication and in participation during certain challenges during Darknet contests. Badges are often updated annually or more frequently and have varying degrees of functionality.
+
 DAEMON
-DARK
+  
 DARKNET
+  Generically, any network that is not publicly available or listed. "The Darknet" is a reference to the interconnected badges, nodes, and Daemon as designed, maintained, and used by Darknet Industries, LLC and its operatives and agents.
+
 HOLON
+  A functional unit within the Darknet, often run by agents and/or operatives to achieve a common goal or facilitate communities, opportunities and coordination 
+
 INSTANCE
+  Instances of the Daemon may be created to allow offline or single event coordination of Darknet functions. These instances are only run by Darknet operatives.
+  
 NODE
+
 OPERATIVE
+
 PROTOCOL
+
 SENSOR
+
