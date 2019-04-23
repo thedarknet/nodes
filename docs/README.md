@@ -1,10 +1,12 @@
 Documentation covering the Darknet node architecture, usage, and repository.
 
-## Terminology ##
+Terminology
+------
 
 Quick reference in [terms.txt](https://github.com/thedarknet/nodes/blob/master/docs/terms.txt)
 
-## Operating Examples ##
+Operating Examples
+------
 
 Nodes and affiliated Darknet devices will participate in several key scenarios:
 * **Daemon (actual)** - badges, nodes, and participating devices communicate to the Daemon in the standard fashion
@@ -30,7 +32,8 @@ Instances of the Daemon (actual) are run by operatives authorized to do so for D
 
 ![alt text][offline-scenarios]
 
-## Node Protocol Stack ##
+Node Protocol Stack
+------
 
 Node communication is currently in development. The protocol stack is based on existing wired or 802.11 IP standards, or using custom RF protocols based on the vendor of a given technology used in a node, sensor, etc. Documentation for each protocol and usage examples will be added as they are developed.
 
