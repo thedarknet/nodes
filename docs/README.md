@@ -12,7 +12,13 @@ Nodes and affiliated Darknet devices will participate in several key scenarios:
 * **Offline** - a Daemon instance is run to provide Daemon functionality in lieu of communication with (actual) 
 Instances of the Daemon (actual) are run by operatives authorized to do so for Darknet Industries. 
 
+
 *Notation: first letter indicates source, second destination. Ex. s2n indicates a sensor initiating communication with a node.*
+* a - agent (action by agent via badge)
+* b - badge (automatic action via badge)
+* d - daemon
+* n - node
+* s - sensor
 
 #### Daemon (actual) ####
 *To be uploaded*
