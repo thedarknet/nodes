@@ -40,4 +40,4 @@ For hardware developers and designers wishing to integrate with Darknet badges o
 
 
 [pstack1]: https://github.com/thedarknet/nodes/blob/master/docs/images/dstack.jpg "Darknet Node Stack"
-[offline-scenarios]: https://github.com/thedarknet/nodes/blob/master/docs/images/offline-scenarios.jpg "Offline Daemon Scenarios"
+[offline-scenarios]: https://github.com/thedarknet/nodes/blob/master/docs/images/offline-scenarios.JPG "Offline Daemon Scenarios"
