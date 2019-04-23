@@ -7,9 +7,9 @@ Quick reference in [terms.txt](https://github.com/thedarknet/nodes/blob/master/d
 ## Operating Examples ##
 
 Nodes and affiliated Darknet devices will participate in several key scenarios:
-* Daemon (actual) - badges, nodes, and participating devices communicate to the Daemon in the standard fashion
-* Daemon (instance) - a cloud hosted instance of the Daemon is providing Daemon functionality in lieu of communication with (actual)
-* Offline - a Daemon instance is run to provide Daemon functionality in lieu of communication with (actual) 
+* **Daemon (actual)** - badges, nodes, and participating devices communicate to the Daemon in the standard fashion
+* **Daemon (instance)** - a cloud hosted instance of the Daemon is providing Daemon functionality in lieu of communication with (actual)
+* **Offline** - a Daemon instance is run to provide Daemon functionality in lieu of communication with (actual) 
 Instances of the Daemon (actual) are run by operatives authorized to do so for Darknet Industries. 
 
 *Notation: first letter indicates source, second destination. Ex. s2n indicates a sensor initiating communication with a node.*
