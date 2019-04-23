@@ -4,6 +4,24 @@ Documentation covering the Darknet node architecture, usage, and repository.
 
 Quick reference in [terms.txt](https://github.com/thedarknet/nodes/blob/master/docs/terms.txt)
 
+## Operating Examples ##
+
+Nodes and affiliated Darknet devices will participate in several key scenarios:
+* Daemon (actual) - badges, nodes, and participating devices communicate to the Daemon in the standard fashion
+* Daemon (instance) - a cloud hosted instance of the Daemon is providing Daemon functionality in lieu of communication with (actual)
+* Offline - a Daemon instance is run to provide Daemon functionality in lieu of communication with (actual) 
+Instances of the Daemon (actual) are run by operatives authorized to do so for Darknet Industries. 
+
+#### Daemon (actual) ####
+*To be uploaded*
+
+#### Daemon (instance) ####
+*To be uploaded*
+
+#### Offline ####
+
+![alt text][offline-scenarios]
+
 ## Node Protocol Stack ##
 
 Node communication is currently in development. The protocol stack is based on existing wired or 802.11 IP standards, or using custom RF protocols based on the vendor of a given technology used in a node, sensor, etc. Documentation for each protocol and usage examples will be added as they are developed.
@@ -22,3 +40,4 @@ For hardware developers and designers wishing to integrate with Darknet badges o
 
 
 [pstack1]: https://github.com/thedarknet/nodes/blob/master/docs/images/dstack.jpg "Darknet Node Stack"
+[offline-scenarios]: https://github.com/thedarknet/nodes/blob/master/docs/images/offline-scenarios.jpg "Offline Daemon Scenarios"
