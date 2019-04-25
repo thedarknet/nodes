@@ -23,7 +23,7 @@ Instances of the Daemon (actual) are run by operatives authorized to do so for D
 * s - sensor
 
 #### Daemon (actual) ####
-*To be uploaded*
+![alt text][online-scenarios]
 
 #### Daemon (instance) ####
 *To be uploaded*
@@ -57,3 +57,4 @@ Node Classification
 
 [pstack1]: https://github.com/thedarknet/nodes/blob/master/docs/images/dstack.jpg "Darknet Node Stack"
 [offline-scenarios]: https://github.com/thedarknet/nodes/blob/master/docs/images/offline-scenarios.JPG "Offline Daemon Scenarios"
+[online-scenarios]: https://github.com/thedarknet/nodes/blob/master/docs/images/online-scenarios.JPG "Online Daemon Scenarios"
