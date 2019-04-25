@@ -56,6 +56,8 @@ Warning: Not all nodes are designed and maintained by Darknet operatives. Nodes 
 **NPC Endpoints** 
 *NPC Endpoints are story, challenge, and lore nodes that have interactive elements provided by a REST API. Agent badges may be designed to interact with NPCs during contests, for specific challenges, or for communication or creative expression by holons or individual agents.*
 
+Repo: [/nodes/npc/](https://github.com/thedarknet/nodes/tree/master/npc)
+
 **Darknet Nodes**
 *Darknet nodes not otherwise classified are nodes created and maintained or otherwise sanctioned by Darknet operatives. Uses will vary, read the instructions.*
 
