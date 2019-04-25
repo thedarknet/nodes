@@ -38,4 +38,4 @@ Creating An NPC
 **Adding Python Events**
 
 
-[NPCs] https://github.com/thedarknet/nodes/blob/master/docs/images/NPCs.JPG "NPC Endpoint Stack"
+[NPCs]: https://github.com/thedarknet/nodes/blob/master/docs/images/NPCs.JPG "NPC Endpoint Stack"
