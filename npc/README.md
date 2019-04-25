@@ -11,6 +11,8 @@ NPC Interactions
 
 NPC Endpoints are built on a RESTful API and use JSON to send back responses or event flags during NPC interactions. A version 1 NPC will use the python scripts in nodes/npc/ to craft an individual instance and run a Flask application. 
 
+![alt-text][NPCs]
+
 #### NPC Flask & Python Server ####
 
 #### NPC JSON ####
@@ -34,3 +36,6 @@ Creating An NPC
 **Creating Inventory**
 **Modifying Inventory**
 **Adding Python Events**
+
+
+[NPCs] 
