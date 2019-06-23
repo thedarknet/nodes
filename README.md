@@ -1,22 +1,48 @@
-# Darknet Nodes
+# Darknet Nodes #
 
-Nodes are any device that communicates with a Darknet asset, agent, or the Daemon. There are several types of nodes:
+This repository houses documentation and code related to nodes on the Darknet.
 
-* Agent Badge
-* NPC Endpoint
-* Participating Device
+## Types of Nodes ##
 
-An Agent Badge is an official Darknet Node and electronic PCB "badge" generally sold at conference and tied to an Agent by the Daemon with a unique ID. Badges have special capabilities and associated quests. Badges are designed by the Darknet badge team and are located in a seperate repository. Badge design usually changes annually.
+The type of node indicates the owner of the node and the level of adherence to standard protocol. Further description of capabilities is listed under the node classifications.
 
-NPC Endpoints are Nodes that communicate with a basic interface to other Darknet Badges and Participating Devices. An NPC Endpoint style Node is equipped with an API for communication and interactions. NPCs all have a name, characteristics, inventory, allowed actions, and responses. 
+* Agent Badge - A special hardware node owned and uniquely identified to Darknet agents & operatives
+* Darknet Node - An operative-sanctioned node of any classification
+* Daemon Endpoints - Darknet nodes specifically designed for and operated by the Daemon
+* Participating Device - Any other node created and owned by agents or other parties
 
-“Participating Devices” are other electronic devices that participate with the Darknet and/or interact with the Daemon via Darknet protocols and APIs. 
+### Node Classifications ###
 
-virtualenv ~/nodes-venv
+Nodes can be classified by how they are constucted, configured, and authorized. Some types of nodes, (eg. Agent Badges), only have one classification because they are operative designed hardware and software intended for a single purpose. Other types of nodes, such as Darknet Nodes, may have multiple classifications, (eg. NPCs, Sensors, etc.), as they are a more abstract category of node with many purposes.
 
-source ~/nodes-venv/bin/activate
+**Darknet Nodes**
+Operative-sanctioned:
+* NPCs
+* Sensors
+* Communication Nodes
 
-cd npc
-pip install -r requirements.txt
-python darknetnpc.py
+**Participating Devices**
+Agent or 3rd Party:
+* NPCs
+* Sensors
+* Communication Nodes
+* Shitty Add-Ons
+* Non-Darknet Badges
 
+#### More on Classifications ####
+
+**Agent Badges** Agent badges are hardware devices used for challenges/training, communication, and identification. Agent badges can be purchased as a kit from Darknet Industries. Badge versions have varying functionality and interactivity with the Daemon and nodes - please see the associated repository for more details.
+
+Badge Repo (Darknet 8 / DC27): /darknet8-badge/
+
+**NPCs** NPC Endpoints are story, challenge, and lore nodes that have interactive elements provided by a REST API. Agent badges may be designed to interact with NPCs during contests, for specific challenges, or for communication or creative expression by holons or individual agents.
+
+Repo: /nodes/npc/
+
+**Darknet Nodes** Darknet nodes not otherwise classified are nodes created and maintained or otherwise sanctioned by Darknet operatives. Uses will vary, read the instructions.
+
+**Participating Devices** Holons, agents, and other participants may, by adhering to documented protocols, add participating devices to the Darknet. Like Darknet nodes, these devices vary in use and intent, and agents are advised to read instructions and exercise awareness when interacting with a non-sanctioned node.
+
+**Sensors & Services** In some cases, a full node is not required and services from sensor devices or Cloud "gadgets" may be used to provide an explicit function or interaction. These are be designed to adhere to basic Darknet Node Protocols and generally agent badges and the Daemon will only interact with these if operatives have sanctioned or installed them.
+
+Repo: /nodes/sensors/
